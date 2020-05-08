@@ -5,6 +5,12 @@ var router = express.Router();
 var orm = require("../config/orm.js");
 
 //create
+router.post("/api/burger", function(req, res) {
+  const burger_name = req.body.burger_name;
+  orm.insertOne(burger_name, function(data) {
+      res.json(data);
+  });
+});
 
 
   //read

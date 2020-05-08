@@ -1,4 +1,4 @@
-var connection = require("./connection.js");
+var connection = require("../config/connection.js");
 
 var orm = {
   selectAll: function(cb) {
@@ -8,9 +8,9 @@ var orm = {
       cb(result);
     });
   },
- insertOne: function(value){
+ insertOne: function(value, cb){
     var queryString = "INSERT INTO burgers (burger_name) VALUES(?)";
-    connection.query(queryString, function(err, result) {
+    connection.query(queryString, value, function(err, result) {
       if (err) throw err;
       cb(result);
     });
